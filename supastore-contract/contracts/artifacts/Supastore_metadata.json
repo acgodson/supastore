@@ -1,0 +1,266 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "InvalidEAS",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "InvalidResolver",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "InvalidSchema",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "InvalidSchemaRegistry",
+				"type": "error"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "schemaName",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "bytes32",
+						"name": "schemaId",
+						"type": "bytes32"
+					}
+				],
+				"name": "SchemaRegistered",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "schemaUID",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "address",
+						"name": "recipient",
+						"type": "address"
+					},
+					{
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
+					}
+				],
+				"name": "createAttestation",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "attestationUID",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getAllSchemas",
+				"outputs": [
+					{
+						"internalType": "string[]",
+						"name": "",
+						"type": "string[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "schema",
+						"type": "string"
+					},
+					{
+						"internalType": "contract ISchemaResolver",
+						"name": "resolver",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "revocable",
+						"type": "bool"
+					}
+				],
+				"name": "registerSchema",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "schemaUID",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "schemaUID",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "attestationUID",
+						"type": "bytes32"
+					}
+				],
+				"name": "revokeAttestation",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"createAttestation(bytes32,address,bytes)": {
+					"params": {
+						"data": "The encoded data related to the attestation.",
+						"recipient": "The recipient of the attestation.",
+						"schemaUID": "The UID of the schema to attest to."
+					},
+					"returns": {
+						"attestationUID": "The UID of the new attestation."
+					}
+				},
+				"getAllSchemas()": {
+					"returns": {
+						"_0": "A list of all registered schema names."
+					}
+				},
+				"registerSchema(string,address,bool)": {
+					"params": {
+						"resolver": "The resolver for custom interactions (optional).",
+						"revocable": "Whether the schema allows revocations.",
+						"schema": "The schema string to register or select."
+					},
+					"returns": {
+						"schemaUID": "The UID of the registered or selected schema."
+					}
+				},
+				"revokeAttestation(bytes32,bytes32)": {
+					"params": {
+						"attestationUID": "The UID of the attestation to revoke.",
+						"schemaUID": "The UID of the schema."
+					}
+				}
+			},
+			"title": "Supastore",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"createAttestation(bytes32,address,bytes)": {
+					"notice": "Creates an attestation for a specific schema."
+				},
+				"getAllSchemas()": {
+					"notice": "Retrieve all schema IDs."
+				},
+				"registerSchema(string,address,bool)": {
+					"notice": "Registers a new schema or selects an existing one."
+				},
+				"revokeAttestation(bytes32,bytes32)": {
+					"notice": "Revokes an existing attestation."
+				}
+			},
+			"notice": "A contract to manage schema registration and attestations using EAS.",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"SupaStore.sol": "Supastore"
+		},
+		"evmVersion": "paris",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@ethereum-attestation-service/eas-contracts/contracts/Common.sol": {
+			"keccak256": "0x957bd2e6d0d6d637f86208b135c29fbaf4412cb08e5e7a61ede16b80561bf685",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://da1dc9aedbb1d4d39c46c2235918d3adfbc5741dd34a46010cf425d134e7936d",
+				"dweb:/ipfs/QmWUk6bXnLaghS2riF3GTFEeURCzgYFMA5woa6AsgPwEgc"
+			]
+		},
+		"@ethereum-attestation-service/eas-contracts/contracts/IEAS.sol": {
+			"keccak256": "0xdad0674defce04905dc7935f2756d6c477a6e876c0b1b7094b112a862f164c12",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://49e448c26c08952df034692d2ab3519dd40a1ebbeae4ce68b294567441933880",
+				"dweb:/ipfs/QmWHcudjskUSCjgqsNWE65LVfWvcYB2vBn8RB1SmzvRLNR"
+			]
+		},
+		"@ethereum-attestation-service/eas-contracts/contracts/ISchemaRegistry.sol": {
+			"keccak256": "0xea97dcd36a0c422169cbaac06698249e199049b627c16bff93fb8ab829058754",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://d453a929ef64a69cd31195ec2ee5ed1193bfa29f633e13c960e92154c37ad158",
+				"dweb:/ipfs/QmXs1Z3njbHs2EMgHonrZDfcwdog4kozHY5tYNrhZK5yqz"
+			]
+		},
+		"@ethereum-attestation-service/eas-contracts/contracts/ISemver.sol": {
+			"keccak256": "0x04a67939b4e1a8d0a51101b8f69f8882930bbdc66319f38023828625b5d1ff18",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://3dd543fa0e33cef1ea757627f9c2a10a66ee1ce17aa9087f437c5b53a903c7f0",
+				"dweb:/ipfs/QmXsy6UsGBzF9zPCCjmiwPpCcX3tHqU13TmR67B69tKnR6"
+			]
+		},
+		"@ethereum-attestation-service/eas-contracts/contracts/resolver/ISchemaResolver.sol": {
+			"keccak256": "0x479f39f03425df5385d790cd2c7447b8250aeb9733d13029d3da8c5982b6604b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://c378654832e0e564f1ef502977253c243712501379ac6233caac05979713ba80",
+				"dweb:/ipfs/QmbKdSGgniy45K2vEH93BJtJYo1syp3FL8JCMEUtZELpjx"
+			]
+		},
+		"SupaStore.sol": {
+			"keccak256": "0x3d408a03aff4bdecb83129636c35567a5bfe66dcee40030edeaf32e540a51118",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://0039ffc477c703ed418f5f9e6098bbe070ea8d9a8609a31aad9fefe8b8238a30",
+				"dweb:/ipfs/QmarxEDqd8CwDJ6KEeN7upfDADd2sVnvsMZSidbxiW3AWd"
+			]
+		}
+	},
+	"version": 1
+}
